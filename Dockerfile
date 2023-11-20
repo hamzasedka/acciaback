@@ -1,4 +1,3 @@
-
 # Use an OpenJDK image as the base image for the build stage
 FROM adoptopenjdk AS build
 
@@ -17,7 +16,7 @@ COPY ./src ./src
 RUN mvn -B clean package -DskipTests
 
 # Use a smaller base image for the runtime stage
-FROM adoptopenjdk:17-jre-hotspot
+FROM adoptopenjdk:17-jre
 
 # Set the working directory inside the container
 WORKDIR /app
