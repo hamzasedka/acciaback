@@ -16,7 +16,7 @@ COPY ./src ./src
 RUN mvn -B clean package -DskipTests
 
 # Use a smaller base image for the runtime stage
-FROM adoptopenjdk:17-jre
+FROM openjdk:17-jre-slim
 
 # Set the working directory inside the container
 WORKDIR /app
