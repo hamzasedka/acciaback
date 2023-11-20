@@ -1,3 +1,4 @@
+
 # Use an OpenJDK image as the base image for the build stage
 FROM adoptopenjdk AS build
 
