@@ -7,7 +7,7 @@ WORKDIR /app
 # Copy the Maven project file and download dependencies
 COPY ./pom.xml .
 RUN mkdir /target
-RUN mvn -B dependency:go-offline
+RUN apk add --no-cache maven && mvn -B dependency:go-offline
 
 # Copy the application source code
 COPY ./src ./src
@@ -16,7 +16,7 @@ COPY ./src ./src
 RUN mvn -B clean package -DskipTests
 
 # Use a smaller base image for the runtime
-FROM adoptopenjdk:17-jre-hotspot-alpine
+FROM openjdk:17-jre-alpine
 
 # Set the working directory inside the container
 WORKDIR /app
