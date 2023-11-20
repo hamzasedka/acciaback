@@ -1,0 +1,5 @@
+com\modis\acciaback\CalculatorTest.class
+com\modis\acciaback\repository\UserRepositoryTest.class
+com\modis\acciaback\AcciaBackApplicationTests2.class
+com\modis\acciaback\AcciaBackApplicationTests.class
+com\modis\acciaback\repository\ResetPasswordTokenRepositoryTest.class

@@ -1,0 +1,88 @@
+-------------------------------------------------------------------------------
+Test set: com.modis.acciaback.AcciaBackApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 18, Failures: 0, Errors: 14, Skipped: 0, Time elapsed: 6.779 s <<< FAILURE! - in com.modis.acciaback.AcciaBackApplicationTests
+testIntentionModel  Time elapsed: 0.152 s  <<< ERROR!
+org.springframework.web.client.ResourceAccessException: I/O error on POST request for "http://127.0.0.1:5000/ModelAnalysis/intention": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect
+	at com.modis.acciaback.AcciaBackApplicationTests.testIntentionModel(AcciaBackApplicationTests.java:111)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at com.modis.acciaback.AcciaBackApplicationTests.testIntentionModel(AcciaBackApplicationTests.java:111)
+
+testDefinition  Time elapsed: 0.043 s  <<< ERROR!
+org.springframework.web.client.ResourceAccessException: I/O error on GET request for "http://127.0.0.1:5000/Definition/AAC": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect
+	at com.modis.acciaback.AcciaBackApplicationTests.testDefinition(AcciaBackApplicationTests.java:154)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at com.modis.acciaback.AcciaBackApplicationTests.testDefinition(AcciaBackApplicationTests.java:154)
+
+testLaststateAnalysis  Time elapsed: 0.007 s  <<< ERROR!
+org.springframework.web.client.ResourceAccessException: I/O error on GET request for "http://127.0.0.1:8000/Components/lastState/FD001": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect
+	at com.modis.acciaback.AcciaBackApplicationTests.testLaststateAnalysis(AcciaBackApplicationTests.java:217)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at com.modis.acciaback.AcciaBackApplicationTests.testLaststateAnalysis(AcciaBackApplicationTests.java:217)
+
+testCriticityAnalysis  Time elapsed: 0.007 s  <<< ERROR!
+org.springframework.web.client.ResourceAccessException: I/O error on POST request for "http://127.0.0.1:5000/LanguageAnalysis/criticity": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect
+	at com.modis.acciaback.AcciaBackApplicationTests.testCriticityAnalysis(AcciaBackApplicationTests.java:258)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at com.modis.acciaback.AcciaBackApplicationTests.testCriticityAnalysis(AcciaBackApplicationTests.java:258)
+
+testIntentionAnalysis  Time elapsed: 0.009 s  <<< ERROR!
+org.springframework.web.client.ResourceAccessException: I/O error on POST request for "http://127.0.0.1:5000/LanguageAnalysis/intention": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect
+	at com.modis.acciaback.AcciaBackApplicationTests.testIntentionAnalysis(AcciaBackApplicationTests.java:93)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at com.modis.acciaback.AcciaBackApplicationTests.testIntentionAnalysis(AcciaBackApplicationTests.java:93)
+
+testCheckingDefinition  Time elapsed: 0.009 s  <<< ERROR!
+org.springframework.web.client.ResourceAccessException: I/O error on POST request for "http://127.0.0.1:5000/Checking/DefinitionEntities": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect
+	at com.modis.acciaback.AcciaBackApplicationTests.testCheckingDefinition(AcciaBackApplicationTests.java:206)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at com.modis.acciaback.AcciaBackApplicationTests.testCheckingDefinition(AcciaBackApplicationTests.java:206)
+
+testCriticityModel  Time elapsed: 0.009 s  <<< ERROR!
+org.springframework.web.client.ResourceAccessException: I/O error on POST request for "http://127.0.0.1:5000/ModelAnalysis/criticity": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect
+	at com.modis.acciaback.AcciaBackApplicationTests.testCriticityModel(AcciaBackApplicationTests.java:101)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at com.modis.acciaback.AcciaBackApplicationTests.testCriticityModel(AcciaBackApplicationTests.java:101)
+
+testEntitiesAnalysis  Time elapsed: 0.007 s  <<< ERROR!
+org.springframework.web.client.ResourceAccessException: I/O error on POST request for "http://127.0.0.1:5000/LanguageAnalysis/entities": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect
+	at com.modis.acciaback.AcciaBackApplicationTests.testEntitiesAnalysis(AcciaBackApplicationTests.java:250)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at com.modis.acciaback.AcciaBackApplicationTests.testEntitiesAnalysis(AcciaBackApplicationTests.java:250)
+
+testSearchDefinition  Time elapsed: 0.01 s  <<< ERROR!
+org.springframework.web.client.ResourceAccessException: I/O error on GET request for "http://127.0.0.1:5000/Definition/AAC/informatique": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect
+	at com.modis.acciaback.AcciaBackApplicationTests.testSearchDefinition(AcciaBackApplicationTests.java:140)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at com.modis.acciaback.AcciaBackApplicationTests.testSearchDefinition(AcciaBackApplicationTests.java:140)
+
+testRulAnalysis  Time elapsed: 0.01 s  <<< ERROR!
+org.springframework.web.client.ResourceAccessException: I/O error on GET request for "http://127.0.0.1:8000/RUL/FD001": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect
+	at com.modis.acciaback.AcciaBackApplicationTests.testRulAnalysis(AcciaBackApplicationTests.java:242)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at com.modis.acciaback.AcciaBackApplicationTests.testRulAnalysis(AcciaBackApplicationTests.java:242)
+
+testCheckingDoc  Time elapsed: 0.008 s  <<< ERROR!
+org.springframework.web.client.ResourceAccessException: I/O error on POST request for "http://127.0.0.1:5000/Checking/DocumentEntities": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect
+	at com.modis.acciaback.AcciaBackApplicationTests.testCheckingDoc(AcciaBackApplicationTests.java:195)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at com.modis.acciaback.AcciaBackApplicationTests.testCheckingDoc(AcciaBackApplicationTests.java:195)
+
+testComponentsWithDateAnalysis  Time elapsed: 0.007 s  <<< ERROR!
+org.springframework.web.client.ResourceAccessException: I/O error on GET request for "http://127.0.0.1:8000/Components/FD001/16-02-2023": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect
+	at com.modis.acciaback.AcciaBackApplicationTests.testComponentsWithDateAnalysis(AcciaBackApplicationTests.java:234)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at com.modis.acciaback.AcciaBackApplicationTests.testComponentsWithDateAnalysis(AcciaBackApplicationTests.java:234)
+
+testInputAnalysis  Time elapsed: 0.012 s  <<< ERROR!
+org.springframework.web.client.ResourceAccessException: I/O error on POST request for "http://127.0.0.1:5000/LanguageAnalysis/inputDetails": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect
+	at com.modis.acciaback.AcciaBackApplicationTests.testInputAnalysis(AcciaBackApplicationTests.java:69)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at com.modis.acciaback.AcciaBackApplicationTests.testInputAnalysis(AcciaBackApplicationTests.java:69)
+
+testComponentsAnalysis  Time elapsed: 0.006 s  <<< ERROR!
+org.springframework.web.client.ResourceAccessException: I/O error on GET request for "http://127.0.0.1:8000/Components/FD001": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect
+	at com.modis.acciaback.AcciaBackApplicationTests.testComponentsAnalysis(AcciaBackApplicationTests.java:225)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at com.modis.acciaback.AcciaBackApplicationTests.testComponentsAnalysis(AcciaBackApplicationTests.java:225)
+
