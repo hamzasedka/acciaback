@@ -1,15 +1,14 @@
-#
-# Build stage
-#
-FROM maven:3.8.2-jdk-11 AS build
-COPY . .
-RUN mvn clean package -DskipTests
+FROM maven:3.8-openjdk-11-slim
+# FROM maven:3.5.0-jdk-8
 
-#
-# Package stage
-#
-FROM openjdk:11-jdk-slim
-COPY --from=build /target/ACCIA-EDF-back-FINAL-0.0.2-SNAPSHOT.jar demo.jar
-# ENV PORT=8080
+# Set the working directory in the container
+WORKDIR /app/accia_back
+
+# Copy the source code and pom.xml to the container
+COPY . .
+
+# Expose the port that the app will run on
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","demo.jar"]
+
+# Run the Spring Boot application using mvn spring-boot:run
+CMD ["mvn", "spring-boot:run"]
