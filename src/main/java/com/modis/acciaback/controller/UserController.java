@@ -18,18 +18,18 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://main--cosmic-moonbeam-82881c.netlify.app")
 @RequestMapping("users")
 public class UserController {
-	Logger log = LogManager.getLogger(UserController.class);
-	
+    Logger log = LogManager.getLogger(UserController.class);
+
     @Autowired
     private UserRepository userRepository;
 
     @GetMapping("/status")
     @PreAuthorize("isAuthenticated()")
     public boolean getStatus() {
-    	log.info(" ------- je suis getStatus controller : -------");
+        log.info(" ------- je suis getStatus controller : -------");
         CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication()
                 .getPrincipal();
         User u = userDetails.getUser();
@@ -39,7 +39,7 @@ public class UserController {
     @PostMapping("/toggleStatus")
     @PreAuthorize("isAuthenticated()")
     public boolean toggleStatus() {
-    	log.info(" ------- je suis toggleStatus controller : -------");
+        log.info(" ------- je suis toggleStatus controller : -------");
         CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication()
                 .getPrincipal();
         User u = userDetails.getUser();
@@ -47,42 +47,33 @@ public class UserController {
         userRepository.save(u);
         return u.isStatusAvailable();
     }
-    
-    
+
     @GetMapping("/allUser")
     public List<User> getAllEmployees() {
         return userRepository.findAll();
     }
-    
-    
-    
-    @GetMapping("/{username}") // GET HTTP method 
-    public User getUser(@PathVariable String username)
-    {
+
+    @GetMapping("/{username}") // GET HTTP method
+    public User getUser(@PathVariable String username) {
         return userRepository.findUserByUsername(username);
     }
-    
-    
-    
-    
+
     @Autowired
     private ResetPasswordTokenService userService;
-    
-    
+
     @Autowired
     private UserRepository userRepo;
+
     @PostMapping("/updatePassword")
-    public User processPasswordUpdate(@RequestBody User user, @RequestParam("oldPassword") String oldPassword, @RequestParam("newPassword") String newPassword) {
-    	log.info("********Update password start*********************");
+    public User processPasswordUpdate(@RequestBody User user, @RequestParam("oldPassword") String oldPassword,
+            @RequestParam("newPassword") String newPassword) {
+        log.info("********Update password start*********************");
 
-
-    	userService.updatePassword(user, oldPassword, newPassword);
-    	log.info("********Update password final*********************");
-    	return user;
+        userService.updatePassword(user, oldPassword, newPassword);
+        log.info("********Update password final*********************");
+        return user;
 
         // Effectuer d'autres actions après la mise à jour du mot de passe
-    } 
-    
-    
-    
+    }
+
 }

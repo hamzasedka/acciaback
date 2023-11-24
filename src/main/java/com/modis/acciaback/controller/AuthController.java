@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("auth")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://main--cosmic-moonbeam-82881c.netlify.app")
 public class AuthController {
-	Logger log = LogManager.getLogger(AuthController.class);
-	
+    Logger log = LogManager.getLogger(AuthController.class);
+
     @Autowired
     private AuthService authService;
 
@@ -31,13 +31,13 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<JwtResponse> login(@RequestBody LoginRequest loginInfos) {
-    	log.info(" ------- je suis login controller : -------");
+        log.info(" ------- je suis login controller : -------");
         return ResponseEntity.ok(authService.login(loginInfos));
     }
 
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@RequestBody SignupRequest signUpRequest) {
-    	log.info(" ------- je suis registerUser controller : -------");
+        log.info(" ------- je suis registerUser controller : -------");
         if (userRepository.existsByUsername(signUpRequest.getUsername())) {
             return ResponseEntity
                     .badRequest()

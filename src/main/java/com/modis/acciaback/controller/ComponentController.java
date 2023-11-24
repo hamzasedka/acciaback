@@ -19,18 +19,18 @@ import com.modis.acciaback.service.serviceImpl.ComponentServiceImpl;
 
 @RestController
 @RequestMapping("component")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://main--cosmic-moonbeam-82881c.netlify.app")
 public class ComponentController {
 	Logger log = LogManager.getLogger(ComponentController.class);
-	
+
 	@Autowired
 	private ComponentServiceImpl componentService;
-	
+
 	@PostMapping("/informations")
 	@PreAuthorize("isAuthenticated()")
-	public ResponseEntity<List<InfoTypeValue>> informationsDetails(@RequestBody ComponentRequest componentInfos){
+	public ResponseEntity<List<InfoTypeValue>> informationsDetails(@RequestBody ComponentRequest componentInfos) {
 		log.info(" ----------------------- Je suis Component controller informationsDetails: ------------------------");
-		
+
 		List<InfoTypeValue> informationsDetails = componentService.informationsDetails(componentInfos);
 		if (informationsDetails == null) {
 			return ResponseEntity.notFound().build();
@@ -38,6 +38,6 @@ public class ComponentController {
 
 			return ResponseEntity.ok(informationsDetails);
 		}
-	
+
 	}
 }

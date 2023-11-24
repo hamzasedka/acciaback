@@ -26,53 +26,52 @@ import com.modis.acciaback.service.ResetPasswordTokenService;
 
 @RestController
 @RequestMapping("password")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://main--cosmic-moonbeam-82881c.netlify.app")
 public class ResetPasswordController {
-	Logger log = LogManager.getLogger(ResetPasswordController.class);
+    Logger log = LogManager.getLogger(ResetPasswordController.class);
 
     @Autowired
     PasswordEncoder encoder;
-	
-	@Autowired
+
+    @Autowired
     private UserRepository userRepository;
-    
+
     @Autowired
     private ResetPasswordTokenRepository resetPasswordTokenRepository;
-    
+
     @Autowired
     private ResetPasswordTokenService resetPasswordTokenService;
-    
+
     @Autowired
     private EmailService emailService;
-    
+
     @GetMapping("/reset-password")
     public ResponseEntity<String> resetPassword(@RequestParam("mail") String userMail) {
-    	log.info("-------------------- Je suis resetPassword de ResetPasswordController -------");
-    	User user = userRepository.findByEmail(userMail);
-    	if (user == null) {
-    		return ResponseEntity.notFound().build();
+        log.info("-------------------- Je suis resetPassword de ResetPasswordController -------");
+        User user = userRepository.findByEmail(userMail);
+        if (user == null) {
+            return ResponseEntity.notFound().build();
         }
-    	ResetPasswordToken resetPasswordToken = resetPasswordTokenService.generateResetPasswordToken(user);
-    	if (resetPasswordToken == null) {
-    		return ResponseEntity.badRequest().body("Echec de la génération du token de réinitialisation de mot de passe.");
+        ResetPasswordToken resetPasswordToken = resetPasswordTokenService.generateResetPasswordToken(user);
+        if (resetPasswordToken == null) {
+            return ResponseEntity.badRequest()
+                    .body("Echec de la génération du token de réinitialisation de mot de passe.");
         }
 
-    	try {
-    		emailService.sendResetPasswordEmail(user.getEmail(), resetPasswordToken.getToken());
-    	} catch (Exception e) {
-    		return ResponseEntity.badRequest().body("Echec de l'envoi du mail de réinitialisation de mot de passe.");
-    	} finally {
-    		return ResponseEntity.ok("Un mail de réinitialisation de mot de passe a été envoyé.");
-    	}
+        try {
+            emailService.sendResetPasswordEmail(user.getEmail(), resetPasswordToken.getToken());
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Echec de l'envoi du mail de réinitialisation de mot de passe.");
+        } finally {
+            return ResponseEntity.ok("Un mail de réinitialisation de mot de passe a été envoyé.");
+        }
     }
-    
-    
-    
+
     @PostMapping("/update-password")
     public ResponseEntity<String> updatePassword(@RequestBody ResetPasswordRequest resetPasswordRequest) {
-    	log.info("-------------------- Je suis updatePassword de ResetPasswordController -------");
-    	
-    	ResetPasswordToken token = resetPasswordTokenRepository.findByToken(resetPasswordRequest.getToken());
+        log.info("-------------------- Je suis updatePassword de ResetPasswordController -------");
+
+        ResetPasswordToken token = resetPasswordTokenRepository.findByToken(resetPasswordRequest.getToken());
         if (token == null) {
             return ResponseEntity.badRequest().body("Le jeton de réinitialisation de mot de passe est invalide.");
         }
@@ -87,9 +86,5 @@ public class ResetPasswordController {
         resetPasswordTokenRepository.delete(token);
         return ResponseEntity.ok("Votre mot de passe a été mis à jour avec succès.");
     }
-    
-    
-    
-    
-  
+
 }

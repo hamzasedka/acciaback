@@ -24,7 +24,7 @@ import com.modis.acciaback.service.serviceImpl.DocServiceImpl;
 
 @RestController
 @RequestMapping("document")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://main--cosmic-moonbeam-82881c.netlify.app")
 public class DocController {
 	Logger log = LogManager.getLogger(DocController.class);
 
@@ -53,8 +53,8 @@ public class DocController {
 		if (checkingDoc == null) {
 			return ResponseEntity.notFound().build();
 		} else {
-		
-		return ResponseEntity.ok(checkingDoc);
+
+			return ResponseEntity.ok(checkingDoc);
 		}
 	}
 

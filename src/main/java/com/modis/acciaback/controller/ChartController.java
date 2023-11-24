@@ -23,7 +23,7 @@ import com.modis.acciaback.service.serviceImpl.ChartServiceImpl;
 
 @RestController
 @RequestMapping("chart")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://main--cosmic-moonbeam-82881c.netlify.app")
 public class ChartController {
 	Logger log = LogManager.getLogger(ChartController.class);
 

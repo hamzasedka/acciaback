@@ -19,7 +19,7 @@ import com.modis.acciaback.service.ChatService;
 
 @RestController
 @RequestMapping("chat")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://main--cosmic-moonbeam-82881c.netlify.app")
 public class ChatController {
 	Logger log = LogManager.getLogger(ChatController.class);
 	private ChatService chatService;
@@ -39,7 +39,7 @@ public class ChatController {
 		} else {
 			return ResponseEntity.ok(inputAnalysis);
 		}
-		
+
 	}
 
 	@PostMapping("/analysis/entities")
@@ -55,14 +55,14 @@ public class ChatController {
 
 	}
 
-	@PostMapping(value="/model/intention", produces = { MediaType.APPLICATION_XHTML_XML_VALUE })
+	@PostMapping(value = "/model/intention", produces = { MediaType.APPLICATION_XHTML_XML_VALUE })
 	@PreAuthorize("isAuthenticated()")
 	public String intentionModel(@RequestBody String query) throws Exception {
 		log.info(" ------- je suis intentionModel controller : -------");
 		String intentionModel = chatService.intentionModel(query);
-		
-			return intentionModel;
-		
+
+		return intentionModel;
+
 	}
 
 	@PostMapping("/analysis/intention")
@@ -92,7 +92,7 @@ public class ChatController {
 		}
 	}
 
-	@PostMapping(value = "/model/criticity",  produces = { MediaType.APPLICATION_XHTML_XML_VALUE })
+	@PostMapping(value = "/model/criticity", produces = { MediaType.APPLICATION_XHTML_XML_VALUE })
 	@PreAuthorize("isAuthenticated()")
 	public String criticityModel(@RequestBody String query) {
 		log.info("----- Je suis criticityAnalysis Controller ---------");
@@ -100,58 +100,61 @@ public class ChatController {
 
 		return criticityModel;
 	}
-	
-//	@PostMapping("/components/laststate")
-//	@PreAuthorize("isAuthenticated()")
-//	public ResponseEntity<String> laststateAnalysis(@RequestBody String engine) {
-//		log.info("----- Je suis laststateAnalysis Controller ---------");
-//		String laststateAnalysis = chatService.laststateAnalysis(engine);
-//
-//		if (laststateAnalysis == null) {
-//			return ResponseEntity.notFound().build();
-//		} else {
-//			return ResponseEntity.ok(laststateAnalysis);
-//		}
-//	}
-//	
-//	@PostMapping("/components")
-//	@PreAuthorize("isAuthenticated()")
-//	public ResponseEntity<String> componentsAnalysis(@RequestBody String engine) {
-//		log.info("----- Je suis laststateAnalysis Controller ---------");
-//		String componentsAnalysis = chatService.componentsAnalysis(engine);
-//
-//		if (componentsAnalysis == null) {
-//			return ResponseEntity.notFound().build();
-//		} else {
-//			return ResponseEntity.ok(componentsAnalysis);
-//		}
-//	}
-//
-//	@PostMapping("/components/date")
-//	@PreAuthorize("isAuthenticated()")
-//	public ResponseEntity<String> componentsWithDateAnalysis(@RequestBody String engine, @RequestBody String date) {
-//		log.info("----- Je suis componentsWithDateAnalysis Controller ---------");
-//		String componentsWithDateAnalysis = chatService.componentsWithDateAnalysis(engine, date);
-//
-//		if (componentsWithDateAnalysis == null) {
-//			return ResponseEntity.notFound().build();
-//		} else {
-//			return ResponseEntity.ok(componentsWithDateAnalysis);
-//		}
-//	}
-//	
-//	@PostMapping("/rul")
-//	@PreAuthorize("isAuthenticated()")
-//	public ResponseEntity<String> rulAnalysis(@RequestBody String engine) {
-//		log.info("----- Je suis rulAnalysis Controller ---------");
-//		String rulAnalysis = chatService.rulAnalysis(engine);
-//
-//		if (rulAnalysis == null) {
-//			return ResponseEntity.notFound().build();
-//		} else {
-//			return ResponseEntity.ok(rulAnalysis);
-//		}
-//	}
+
+	// @PostMapping("/components/laststate")
+	// @PreAuthorize("isAuthenticated()")
+	// public ResponseEntity<String> laststateAnalysis(@RequestBody String engine) {
+	// log.info("----- Je suis laststateAnalysis Controller ---------");
+	// String laststateAnalysis = chatService.laststateAnalysis(engine);
+	//
+	// if (laststateAnalysis == null) {
+	// return ResponseEntity.notFound().build();
+	// } else {
+	// return ResponseEntity.ok(laststateAnalysis);
+	// }
+	// }
+	//
+	// @PostMapping("/components")
+	// @PreAuthorize("isAuthenticated()")
+	// public ResponseEntity<String> componentsAnalysis(@RequestBody String engine)
+	// {
+	// log.info("----- Je suis laststateAnalysis Controller ---------");
+	// String componentsAnalysis = chatService.componentsAnalysis(engine);
+	//
+	// if (componentsAnalysis == null) {
+	// return ResponseEntity.notFound().build();
+	// } else {
+	// return ResponseEntity.ok(componentsAnalysis);
+	// }
+	// }
+	//
+	// @PostMapping("/components/date")
+	// @PreAuthorize("isAuthenticated()")
+	// public ResponseEntity<String> componentsWithDateAnalysis(@RequestBody String
+	// engine, @RequestBody String date) {
+	// log.info("----- Je suis componentsWithDateAnalysis Controller ---------");
+	// String componentsWithDateAnalysis =
+	// chatService.componentsWithDateAnalysis(engine, date);
+	//
+	// if (componentsWithDateAnalysis == null) {
+	// return ResponseEntity.notFound().build();
+	// } else {
+	// return ResponseEntity.ok(componentsWithDateAnalysis);
+	// }
+	// }
+	//
+	// @PostMapping("/rul")
+	// @PreAuthorize("isAuthenticated()")
+	// public ResponseEntity<String> rulAnalysis(@RequestBody String engine) {
+	// log.info("----- Je suis rulAnalysis Controller ---------");
+	// String rulAnalysis = chatService.rulAnalysis(engine);
+	//
+	// if (rulAnalysis == null) {
+	// return ResponseEntity.notFound().build();
+	// } else {
+	// return ResponseEntity.ok(rulAnalysis);
+	// }
+	// }
 
 	@GetMapping("/components/laststate/{engine}")
 	@PreAuthorize("isAuthenticated()")
@@ -166,11 +169,10 @@ public class ChatController {
 		}
 	}
 
-	
 	@GetMapping("/components/{engine}")
 	@PreAuthorize("isAuthenticated()")
 	public ResponseEntity<String> componentsAnalysis(@PathVariable(value = "engine") String engine) {
-		
+
 		log.info("----- Je suis laststateAnalysis Controller ---------");
 		String componentsAnalysis = chatService.componentsAnalysis(engine);
 
@@ -183,15 +185,13 @@ public class ChatController {
 
 			return ResponseEntity.ok(componentsAnalysis);
 		}
-		
+
 	}
-	
-	
-	
 
 	@GetMapping("/components/{engine}/{date}")
 	@PreAuthorize("isAuthenticated()")
-	public ResponseEntity<String> componentsWithDateAnalysis(@PathVariable(value = "engine") String engine, @PathVariable(value = "date") String date) {
+	public ResponseEntity<String> componentsWithDateAnalysis(@PathVariable(value = "engine") String engine,
+			@PathVariable(value = "date") String date) {
 		log.info("----- Je suis componentsWithDateAnalysis Controller ---------");
 		String componentsWithDateAnalysis = chatService.componentsWithDateAnalysis(engine, date);
 
@@ -201,7 +201,7 @@ public class ChatController {
 			return ResponseEntity.ok(componentsWithDateAnalysis);
 		}
 	}
-	
+
 	@GetMapping("/rul/{engine}")
 	@PreAuthorize("isAuthenticated()")
 	public ResponseEntity<String> rulAnalysis(@PathVariable(value = "engine") String engine) {

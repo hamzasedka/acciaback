@@ -20,7 +20,7 @@ import com.modis.acciaback.service.serviceImpl.TermServiceImpl;
 
 @RestController
 @RequestMapping("term")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://main--cosmic-moonbeam-82881c.netlify.app")
 public class TermController {
 
 	Logger log = LogManager.getLogger(TermController.class);
@@ -34,20 +34,21 @@ public class TermController {
 			throws ResourceNotFoundException {
 		log.info(" ------- je suis searchDefinition controller : -------");
 		DefinitionsResponse termDefinitions = termService.searchDefinition(sigle);
-		
+
 		if (termDefinitions == null) {
 			return ResponseEntity.notFound().build();
 		} else {
-			System.out.println("definitions : "+ termDefinitions.getDefinitions().toString());
+			System.out.println("definitions : " + termDefinitions.getDefinitions().toString());
 			return ResponseEntity.ok(termDefinitions);
 		}
 	}
 
 	@GetMapping(value = "/definitions/{sigle}/{domaine}")
 	@PreAuthorize("isAuthenticated()")
-	public ResponseEntity<DefinitionsResponse> searchDefinition(@PathVariable(value = "sigle") String sigle,@PathVariable(value = "domaine") String domaine) {
+	public ResponseEntity<DefinitionsResponse> searchDefinition(@PathVariable(value = "sigle") String sigle,
+			@PathVariable(value = "domaine") String domaine) {
 		log.info(" ------- je suis searchDefinition controller : -------");
-		DefinitionsResponse termDefinition = termService.searchDefinition(sigle,domaine);
+		DefinitionsResponse termDefinition = termService.searchDefinition(sigle, domaine);
 		if (termDefinition == null) {
 			return ResponseEntity.notFound().build();
 		} else {
